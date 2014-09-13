@@ -3,9 +3,10 @@ transitpoa
 
 Instructions
 
+npm install -g sails
+
 ```sh
-npm install
-bower install
+make
 sails lift
 ```
 Maybe you need use sudo
