@@ -1,4 +1,4 @@
-var InfoView = Backbone.View.extend({
+window.App.Views.InfoView = Backbone.View.extend({
 	className: 'about',
 
 	initialize: function () {
