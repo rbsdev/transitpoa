@@ -7,9 +7,15 @@ window.App.Views.MapView = Backbone.View.extend({
 	initializeMap: function () {
 		var mapOptions = this.getMapOptions();
 		var container = document.getElementById('map-container');
-		cl(mapOptions, container);
 
 		this.map = new google.maps.Map(container, mapOptions);
+		this.bindMapEvents();
+	},
+
+	bindMapEvents: function () {
+		google.maps.event.addDomListener(this.map, 'click', function (event) {
+			console.log(event.latLng.lat(), event.latLng.lng());
+		});
 	},
 
 	getMapOptions: function () {
