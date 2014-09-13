@@ -12,6 +12,11 @@ var App = Backbone.View.extend({
 		cl('App init...');
 	},
 
+	appendAbout: function () {
+		var view = new InfoView();
+		this.$el.append(view.render().$el);
+	},
+
 	render: function () {
 		this.$el.html('<h1>Transit POA</h1>');
 	}
@@ -19,3 +24,4 @@ var App = Backbone.View.extend({
 
 var app = new App();
 app.render();
+app.appendAbout();
