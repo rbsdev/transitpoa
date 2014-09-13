@@ -1,0 +1,21 @@
+{
+  "name": "transitpoa",
+  "version": "0.0.1",
+  "authors": [
+    "Raphael <raphasilvac@gmail.com>"
+  ],
+  "description": "Acidentes de transito de Porto Alegre",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "bootstrap": "~3.2.0"
+  }
+}
