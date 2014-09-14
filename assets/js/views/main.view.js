@@ -3,11 +3,22 @@ window.App.Views.MainView = Backbone.View.extend({
 	
 	initialize: function () {
 		cl('App init...');
+		this.bindEvents();
+	},
+
+	bindEvents: function () {
+		var btn = $('#mais-sobre');
+		var footer = $('footer');
+
+		btn.on('click', function (ev) {
+			ev.preventDefault();
+			footer.toggleClass('expanded');
+		});
 	},
 
 	appendAbout: function () {
 		var view = new App.Views.InfoView();
-		this.$el.append(view.render().$el);
+		view.render();
 	},
 
 	appendMap: function () {
