@@ -6,6 +6,46 @@ html,body {
 	height: 100%;
 }
 
+#map-container {
+	z-index: 9;
+}
+
+.show-info {
+	position: absolute;
+	width: auto;
+	height: 25px;
+	right: 20px;
+	top: 40px;
+	z-index: 99;
+}
+
+.box-info {
+	position: absolute;
+	right: 0;
+	width: 0%;
+	height: 100%;
+	background: rgba(199, 199, 199, 0.87);
+	-webkit-box-shadow: -10px 0 10px 10px #D9D9D9;
+	box-shadow: -4px 0 3px 1px #999;
+	z-index: 99;
+
+	-webkit-transition: width 750ms ease-in-out;
+	-moz-transition: width 750ms ease-in-out;
+	-ms-transition: width 750ms ease-in-out;
+	-o-transition: width 750ms ease-in-out;
+	transition: width 750ms ease-in-out;
+
+	&.active {
+		width: 90%;
+
+		-webkit-transition: width 750ms ease-in-out;
+		-moz-transition: width 750ms ease-in-out;
+		-ms-transition: width 750ms ease-in-out;
+		-o-transition: width 750ms ease-in-out;
+		transition: width 750ms ease-in-out;
+	}
+}
+
 header, footer {
 	background-color: #ededed;
 }

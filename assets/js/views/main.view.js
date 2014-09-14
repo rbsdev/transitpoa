@@ -8,7 +8,13 @@ window.App.Views.MainView = Backbone.View.extend({
 
 	bindEvents: function () {
 		var btn = $('#mais-sobre');
+		var showInfo = $('.show-info');
+		var boxInfo = $('.box-info');
 		var footer = $('footer');
+
+		showInfo.on('click', function () {
+			boxInfo.toggleClass('active');
+		});
 
 		btn.on('click', function (ev) {
 			ev.preventDefault();
