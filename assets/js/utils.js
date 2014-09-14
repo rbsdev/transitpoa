@@ -5,7 +5,7 @@ window.App = {
 	Views: {}
 }
 
-var vent = _.extend({}, Backbone.events);
+var vent = _.extend({}, Backbone.Events);
 
 var cl = function () {
 	if(console) {

@@ -3,11 +3,28 @@ window.App.Views.MainView = Backbone.View.extend({
 	
 	initialize: function () {
 		cl('App init...');
+		this.bindEvents();
+	},
+
+	bindEvents: function () {
+		var btn = $('#mais-sobre');
+		var showInfo = $('.show-info');
+		var boxInfo = $('.box-info');
+		var footer = $('footer');
+
+		showInfo.on('click', function () {
+			boxInfo.toggleClass('active');
+		});
+
+		btn.on('click', function (ev) {
+			ev.preventDefault();
+			footer.toggleClass('expanded');
+		});
 	},
 
 	appendAbout: function () {
 		var view = new App.Views.InfoView();
-		this.$el.append(view.render().$el);
+		view.render();
 	},
 
 	appendMap: function () {
