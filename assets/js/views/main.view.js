@@ -7,6 +7,7 @@ window.App.Views.MainView = Backbone.View.extend({
 	},
 
 	bindEvents: function () {
+		var _this = this;
 		var btn = $('#mais-sobre');
 		var showInfo = $('.show-info');
 		var boxInfo = $('.box-info');
@@ -19,6 +20,10 @@ window.App.Views.MainView = Backbone.View.extend({
 		btn.on('click', function (ev) {
 			ev.preventDefault();
 			footer.toggleClass('expanded');
+			if(!_this.loaded) {
+				_this.appendAbout();
+			}
+			_this.loaded = true;
 		});
 	},
 
@@ -38,7 +43,6 @@ window.App.Views.MainView = Backbone.View.extend({
 	},
 
 	render: function () {
-		this.appendAbout();
 		this.appendMap();
 		return this;
 	}

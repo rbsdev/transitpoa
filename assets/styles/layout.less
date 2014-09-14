@@ -17,8 +17,6 @@ html,body {
 
 .show-info {
 	position: absolute;
-	width: auto;
-	height: 25px;
 	right: 20px;
 	top: 40px;
 	z-index: @z-index-medium;
@@ -52,8 +50,13 @@ html,body {
 }
 
 header, footer {
-	background-color: #ededed;
+	background-color: #333333;
+	color: #FFFFFF;
 }
+
+header a, footer a {
+	color: #B71F37;
+}  
 
 footer {
 	position: fixed;
@@ -61,6 +64,7 @@ footer {
 	width: 100%;
 	height: 60px;
 	z-index: @z-index-medium;
+
 
 	.logo {
 		float: left;
@@ -100,12 +104,7 @@ footer {
 		-o-transition: height 750ms ease-in-out;
 		transition: height 750ms ease-in-out;
 	}
-
-	.shadow {
-		position: absolute;
-		width: 100%;
-		height: 20px;
-		bottom: 0;
-		background: linear-gradient(to bottom,rgba(255,255,255,0) 0,rgba(0,0,0,0.5) 100%);
-	}
 }
+
+.desc {display: none;}
+.expanded .desc {display: block;}
