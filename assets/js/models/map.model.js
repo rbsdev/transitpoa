@@ -8,5 +8,30 @@ window.App.Models.MapModel = Backbone.Model.extend({
 	getData: function (event) {
 		// should request data here
 		// vent.trigger('onDataArrived', {markers: data});
+	},
+
+	onDataArrived: function (markers) {
+		vent.trigger('onDataArrived', {markers: markers});
+	},
+
+	onMarkerData: function (marker) {
+		vent.trigger('onMarkerData', {marker: marker});
+	},
+
+	getById: function (id) {
+		var that = this;
+
+		$.get('/accidents?id='+id, function (data) {
+			console.log('markerData', data);
+			//that.onMarkerData(data);
+		});
+	},
+
+	getInitialData: function () {
+		var that = this;
+
+		$.get('/accidents', {}, function (data) {
+			that.onDataArrived(data);
+		});
 	}
 });
