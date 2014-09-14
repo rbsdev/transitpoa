@@ -17,6 +17,7 @@ window.App.Views.MapView = Backbone.View.extend({
 	onMapClick: function (event) {
 		console.log(event.latLng.lat(), event.latLng.lng());
 		this.model.getData(event);
+		this.getBoundaries();
 	},
 
 	getMapOptions: function () {
@@ -26,6 +27,15 @@ window.App.Views.MapView = Backbone.View.extend({
 		};
 
 		return mapOptions;
+	},
+
+	getBoundaries: function () {
+		var bounds = this.map.getBounds();
+		var ne = bounds.getNorthEast();
+		var sw = bounds.getSouthWest();
+
+		console.log(ne.lat(), sw.lng());
+		console.log(sw.lat(), ne.lng());
 	},
 
 	plotMarkers: function (markers) {
