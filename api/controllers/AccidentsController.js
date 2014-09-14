@@ -7,7 +7,8 @@
 
 module.exports = {
 	index: function (req, res, next) {
-		var limit = req.param('limit') ? (req.param('limit') > 200 ? 200 : req.param('limit')) : 200,
+		var id = req.param('id'),
+		limit = req.param('limit') ? (req.param('limit') > 200 ? 200 : req.param('limit')) : 200,
 		skip =  req.param('skip'),
 		street = req.param('street') || null,
 		crossRoad =  req.param('crossRoad') || null,
@@ -38,6 +39,7 @@ module.exports = {
 			];
 		}
 
+		if(id) {where.id = id;}
 		if(crossRoad) {where.LOCAL = crossRoad;}
 		if(type) {where.TIPO_ACID = type;}
 		if(startDate) {where.DATA_HORA = {'>=': startDate};}
