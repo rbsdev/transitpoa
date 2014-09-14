@@ -18,5 +18,6 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
-  connection: 'mongoDB'
+  connection: 'mongoDB',
+  migrate: 'safe'
 };
