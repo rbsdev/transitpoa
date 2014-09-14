@@ -10,6 +10,14 @@ module.exports = {
   attributes: {
   	ID: {
   		type: 'string'
+  	},
+
+  	LATITUDE: {
+  		tyoe: 'float'
+  	},
+
+  	LONGITUDE: {
+  		tyoe: 'float'
   	}
   }
 };
