@@ -104,6 +104,7 @@ window.App.Views.MapView = Backbone.View.extend({
 
 	bind: function () {
 		var that = this;
+		var btnClose = $('#close');
 
 		vent.bind('onDataArrived', function (data) {
 			that.onDataArrived(data);
@@ -111,6 +112,25 @@ window.App.Views.MapView = Backbone.View.extend({
 
 		vent.bind('onMarkerData', function (data) {
 			that.onMarkerData(data);
+		});
+
+		btnClose.on('click', function (ev) {
+			$('.box-info').toggleClass('active');
+		});
+
+		$('#graph').on('click', function () {
+			$('#graphContainer').show();
+			$('#filterContainer').hide();
+		});
+
+		$('#filter').on('click', function () {
+			$('#filterContainer').show();
+			$('#graphContainer').hide();
+		});
+
+		$('#submit').on('click', function (ev) {
+			ev.preventDefult();
+			$('.box-info').toggleClass('active');
 		});
 	},
 

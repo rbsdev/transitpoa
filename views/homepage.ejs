@@ -1,8 +1,69 @@
 <section id="app">
     <a href="#" class="btn btn-danger show-info"><span class="glyphicon glyphicon-cog"></span> Opções</a>
     <div class="box-info">
-        <div class="row">
-            
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-12" style="margin-bottom">
+                    <ul class="nav nav-pills">
+                        <button id="graph" class="btn btn-danger"><span class="glyphicon glyphicon-stats"></span> Gráficos</a></button>
+                        <button id="filter" class="btn btn-danger"><span class="glyphicon glyphicon-filter"></span> Filtros</button>
+                        <button id="close" class="btn btn-warning"><span class="glyphicon glyphicon-remove-circle"></span> Fechar</button>
+                    </ul>
+                </div>
+            </div>
+            <div id="graphContainer" style="overflow: hidden;">
+                <h3>Gráficos</h3>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="/images/graphs/01.png" width="90%" alt="..." class="img-rounded">
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="/images/graphs/02.png" width="90%" alt="..." class="img-rounded">
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="/images/graphs/03.png" width="90%" alt="..." class="img-rounded">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-sm-4">
+                        <img src="/images/graphs/04.png" width="90%" alt="..." class="img-rounded">
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="/images/graphs/05.png" width="90%" alt="..." class="img-rounded">
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="/images/graphs/06.png" width="90%" alt="..." class="img-rounded">
+                    </div>
+                </div>
+            </div>
+            <div id="filterContainer" style="display:none;">
+                <h3>Filtros</h3>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-sm-12">
+                        <form role="form">
+                        <div class="form-group">
+                            <label for="">Logadouro:</label>
+                            <input type="text" class="form-control" id="" placeholder="Av, Praça, Rua...">
+                        </div>
+                        <div class="form-group">
+                        <label for="">Marque as opções que desejar:</label>
+                        <select multiple class="form-control" style="height: 135px;">
+                            <option>Mortos</option>
+                            <option>Feridos</option>
+                            <option>Carro</option>
+                            <option>Moto</option>
+                            <option>Caminhão</option>
+                            <option>Bicicleta</option>
+                            <option>Cruzamentos</option>
+                        </select>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                          <button id="submit" type="submit" class="btn btn-default">Filtrar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="map-container"></div>
