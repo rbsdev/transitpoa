@@ -59,11 +59,11 @@ module.exports = {
 		if(time) {where.HORA = time.split(',');}
 		console.log(latNw, latSe);
 		if(latNw && latSe) {
-			where.LATITUDE = {'<=': latNw, '>=': latSe};
+			where.LATITUDE = {'<=': parseFloat(latNw), '>=': parseFloat(latSe)};
 		}
-		
+		console.log('----', lngNw, lngSe);
 		if(lngNw && lngSe) {
-			where.LONGITUDE = {'>=': lngNw, '>=': lngSe};
+			where.LONGITUDE = {'<=': parseFloat(lngNw), '>=': parseFloat(lngSe)};
 		}
 
 		if(region) {where.REGIAO = region;}

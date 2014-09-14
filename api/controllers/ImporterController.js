@@ -38,9 +38,18 @@ module.exports = {
 				   	count = 0;
 
 				   	for(var i=0, len=jsonObj.length; i<len; i++) {
-				   		// var data = jsonObj[i];
+				   		var data = jsonObj[i];
+				   		if(typeof(data.LATITUDE) === 'string') {
+				   			if(data.LATITUDE.replace)
+				   			data.LATITUDE = parseFloat(data.LATITUDE.replace(',','.'));
+				   		}
+
+				   		if(typeof(data.LONGITUDE) === 'string') {
+				   			if(data.LONGITUDE)
+				   			data.LONGITUDE = parseFloat(data.LONGITUDE.replace(',','.'));
+				   		}
 						// collection.update({ID: data.ID}, {$set: data}, {upsert: true}, function(err, docs) {
-						collection.insert(jsonObj[i], function(err, docs) {
+						collection.insert(data, function(err, docs) {
 					    	// if(err) {console.log(err);}
 					    	count++;
 					    	if(count === (len-1)) { res.json({success: true, type: 1}); db.close(); }
