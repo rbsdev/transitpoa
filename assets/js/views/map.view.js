@@ -51,8 +51,8 @@ window.App.Views.MapView = Backbone.View.extend({
 	plotMarker: function (markerData) {
 		var that = this;
 		var	position = new google.maps.LatLng(
-			markerData.LATITUDE.replace(',', '.'),
-			markerData.LONGITUDE.replace(',', '.'));
+			markerData.LATITUDE,
+			markerData.LONGITUDE);
 
 		var opts = {
 		    position: position,
@@ -94,8 +94,8 @@ window.App.Views.MapView = Backbone.View.extend({
 		var id = markerData.id;
 
 		var	position = new google.maps.LatLng(
-			markerData.LATITUDE.replace(',', '.'),
-			markerData.LONGITUDE.replace(',', '.'));
+			markerData.LATITUDE,
+			markerData.LONGITUDE);
 
 		this.map.setCenter(position);
 
