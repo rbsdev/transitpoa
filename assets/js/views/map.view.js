@@ -11,7 +11,9 @@ window.App.Views.MapView = Backbone.View.extend({
 		var container = document.getElementById('map-container');
 
 		this.map = new google.maps.Map(container, mapOptions);
+
 		this.bindMapEvents();
+		this.model.getInitialData();
 	},
 
 	onMapClick: function (event) {
@@ -34,8 +36,8 @@ window.App.Views.MapView = Backbone.View.extend({
 		var ne = bounds.getNorthEast();
 		var sw = bounds.getSouthWest();
 
-		console.log(ne.lat(), sw.lng());
-		console.log(sw.lat(), ne.lng());
+		console.log('ne', ne.lat(), ne.lng());
+		console.log('sw', sw.lat(), sw.lng());
 	},
 
 	plotMarkers: function (markers) {
@@ -46,19 +48,58 @@ window.App.Views.MapView = Backbone.View.extend({
 		});
 	},
 
-	plotMarker: function (marker) {
-		var position = new google.maps.LatLng(
-			marker.LATITUDE.replace(',', '.'),
-			marker.LONGITUDE.replace(',', '.'));
+	plotMarker: function (markerData) {
+		var that = this;
+		var	position = new google.maps.LatLng(
+			markerData.LATITUDE.replace(',', '.'),
+			markerData.LONGITUDE.replace(',', '.'));
 
-		var marker = new google.maps.Marker({
+		var opts = {
 		    position: position,
 		    map: this.map
+		}
+
+		opts.icon = this.getIcon(markerData);
+
+		var marker = new google.maps.Marker(opts);
+
+		google.maps.event.addListener(marker, 'click', function(event){
+		    that.onMarkerClick(markerData);
 		});
+	},
+
+	getIcon: function (marker) {
+		var icon = null;
+
+		if (marker.CAMINHAO > 0) {
+			icon = 'http://png-1.findicons.com/files/icons/2579/iphone_icons/30/truck.png';
+		}
+
+		if (marker.BICICLETA > 0) {
+			icon = 'http://assets2.tribesports.com/system/challenges/images/000/027/901/tiny/20121002150517-get-a-bike-and-go-out-to-cycle.png';
+		}
+
+		return icon;
 	},
 
 	onDataArrived: function (data) {
 		this.plotMarkers(data.markers);
+	},
+
+	onMarkerData: function (data) {
+
+	},
+
+	onMarkerClick: function (markerData) {
+		var id = markerData.id;
+
+		var	position = new google.maps.LatLng(
+			markerData.LATITUDE.replace(',', '.'),
+			markerData.LONGITUDE.replace(',', '.'));
+
+		this.map.setCenter(position);
+
+		this.model.getById(id);
 	},
 
 	bind: function () {
@@ -66,6 +107,10 @@ window.App.Views.MapView = Backbone.View.extend({
 
 		vent.bind('onDataArrived', function (data) {
 			that.onDataArrived(data);
+		});
+
+		vent.bind('onMarkerData', function (data) {
+			that.onMarkerData(data);
 		});
 	},
 
